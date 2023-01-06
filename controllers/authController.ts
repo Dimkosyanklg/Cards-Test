@@ -23,6 +23,9 @@ export const register = async (req: Request, res: Response) => {
             password: encryptedPassword,
         });
 
+        const token = user.generateAuthToken();
+        res.cookie("token", token, { httpOnly: true }).json(user);
+
         res.status(200).json();
     } catch (err) {
         console.log(err);

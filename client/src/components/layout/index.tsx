@@ -17,17 +17,16 @@ const GlobalStyle = createGlobalStyle`
   }
   html {
     height: 100%;
+    font-family: 'Roboto', sans-serif;
   }
 ` as any;
 
 export const Layout: React.FC<Props> = ({ header, children }) => {
     return (
-        <>
+        <s.Wrapper>
             {header}
-            <s.Wrapper>
-                <s.Content>{children}</s.Content>
-            </s.Wrapper>
+            <s.Content>{children}</s.Content>
             <GlobalStyle />
-        </>
+        </s.Wrapper>
     );
 };
