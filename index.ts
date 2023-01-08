@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import { authRouter } from "./routes/authRouter";
 import cookieParser from "cookie-parser";
 import { cardsRouter } from "./routes/cardsRouter";
+import { userRouter } from "./routes/userRouter";
 
 config();
 connectDB();
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, "./client", "public")));
 
 app.use("/auth", authRouter);
 app.use("/cards", cardsRouter);
+app.use("/user", userRouter);
 app.use("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./client/public", "index.html"));
 });

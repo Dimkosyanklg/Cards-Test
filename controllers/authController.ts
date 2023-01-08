@@ -24,7 +24,11 @@ export const register = async (req: Request, res: Response) => {
         });
 
         const token = user.generateAuthToken();
-        res.cookie("token", token, { httpOnly: true }).json(user);
+
+        let expires = new Date();
+        expires.setHours(expires.getHours() + 2);
+
+        res.cookie("token", token, { httpOnly: true, expires }).json(user);
 
         res.status(200).json();
     } catch (err) {
@@ -45,7 +49,11 @@ export const login = async (req: Request, res: Response) => {
 
         if (user && (await bcrypt.compare(password, user.password))) {
             const token = user.generateAuthToken();
-            res.cookie("token", token, { httpOnly: true }).json(user);
+
+            let expires = new Date();
+            expires.setHours(expires.getHours() + 2);
+
+            res.cookie("token", token, { httpOnly: true, expires }).json(user);
         }
 
         res.status(400).send("Invalid Credentials");
@@ -57,5 +65,5 @@ export const login = async (req: Request, res: Response) => {
 
 export const logout = async (req: Request, res: Response) => {
     res.clearCookie("token");
-    res.json();
+    res.end();
 };

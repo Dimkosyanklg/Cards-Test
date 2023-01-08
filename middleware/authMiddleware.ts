@@ -5,7 +5,6 @@ export const verifyToken = (req, res, next) => {
     if (!token) return res.status(401).json();
     try {
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
-        req.user = decoded;
         next();
     } catch (er) {
         res.clearCookie("token");

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import { Input, InputContainer, InputTitle, RoundBlock } from "../../components/core";
+import { Button, Input, InputContainer, InputTitle, RoundBlock } from "../../components/core";
 import { InputError } from "../../components/core/Input.styled";
 import { registerApi } from "./api/register";
 import * as s from "./Register.styled";
@@ -53,7 +53,7 @@ export const Register: React.FC<Props> = ({}) => {
                     <Input {...register("password", { required: true })} type="password" />
                     {errors.password && <InputError>Введите пароль</InputError>}
                 </InputContainer>
-                <button type="submit">Зарегистрироваться</button>
+                <Button type="submit">Зарегистрироваться</Button>
                 {!!apiError && <InputError>{apiError}</InputError>}
             </s.Form>
         </RoundBlock>

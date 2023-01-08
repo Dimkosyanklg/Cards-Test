@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import { createGlobalStyle } from "styled-components";
+import { Header } from "../../features/header";
 import * as s from "./Layout.styled";
 
 type Props = {
-    header: React.ReactNode;
     children?: React.ReactNode;
 };
 
@@ -21,10 +22,17 @@ const GlobalStyle = createGlobalStyle`
   }
 ` as any;
 
-export const Layout: React.FC<Props> = ({ header, children }) => {
+export const Layout: React.FC<Props> = ({ children }) => {
+    const { pathname } = useLocation();
+    const [showHeader, setShowHeader] = useState(pathname !== "/login" && pathname !== "/register");
+
+    useEffect(() => {
+        setShowHeader(pathname !== "/login" && pathname !== "/register");
+    }, [pathname]);
+
     return (
         <s.Wrapper>
-            {header}
+            {showHeader && <Header />}
             <s.Content>{children}</s.Content>
             <GlobalStyle />
         </s.Wrapper>

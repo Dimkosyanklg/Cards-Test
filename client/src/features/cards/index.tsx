@@ -47,6 +47,7 @@ export const Cards: React.FC<Props> = ({}) => {
                     <PaginationContainer>
                         {pagesArray.map((page) => (
                             <Page
+                                key={page}
                                 active={currentPage === page}
                                 onClick={() => {
                                     if (currentPage !== page) {
