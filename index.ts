@@ -20,8 +20,8 @@ app.use(cookieParser());
 
 app.use(bodyParser.json());
 
-app.use(express.static("public"));
-app.use(express.static(path.resolve(__dirname + "/client/public")));
+app.use("/", express.static(__dirname));
+app.use("/", express.static(path.resolve(__dirname + "/client/public")));
 
 app.use("/auth", authRouter);
 app.use("/cards", cardsRouter);
@@ -31,7 +31,7 @@ app.get("*", (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log("server started");
+    console.log(__dirname);
 });
 
 // app.get("/", (req, res) => res.type("html").send(html));
