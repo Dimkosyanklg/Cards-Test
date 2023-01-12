@@ -20,8 +20,7 @@ app.use(cookieParser());
 
 app.use(bodyParser.json());
 
-app.use("/", express.static(__dirname));
-app.use("/", express.static(path.resolve(__dirname + "/client/public")));
+app.use("/public", express.static(path.resolve(__dirname + "/client/public")));
 
 app.use("/auth", authRouter);
 app.use("/cards", cardsRouter);
