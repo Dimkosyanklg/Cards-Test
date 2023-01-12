@@ -20,6 +20,7 @@ app.use(cookieParser());
 
 app.use(bodyParser.json());
 
+app.use(express.static(path.resolve(path.join(__dirname, "/client/public"))));
 app.use("/bundles", express.static(path.resolve(path.join(__dirname, "/client/public/bundles"))));
 
 app.use("/auth", authRouter);
