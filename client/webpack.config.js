@@ -25,5 +25,5 @@ module.exports = {
             },
         ],
     },
-    plugins: [new CopyWebpackPlugin({ patterns: [{ from: "public", to: "../../dist/client/public" }] })],
+    plugins: [new CopyWebpackPlugin({ patterns: [{ from: "public", to: "../../dist/public" }] })],
 };
