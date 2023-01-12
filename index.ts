@@ -20,14 +20,14 @@ app.use(cookieParser());
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.resolve(__dirname + "/public")));
+app.use(express.static(path.join(__dirname, "public")));
 console.log(path.resolve(__dirname + "/client/public"));
 
 app.use("/auth", authRouter);
 app.use("/cards", cardsRouter);
 app.use("/user", userRouter);
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname + "/client/public/index.html"));
+    res.sendFile(path.join(__dirname, "client", "public", "index.html"));
 });
 
 app.listen(port, () => {
