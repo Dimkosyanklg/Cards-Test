@@ -6,7 +6,7 @@ module.exports = {
     mode: "development",
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "./public/bundles/"),
+        path: __dirname + "/public/",
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"],
@@ -25,5 +25,5 @@ module.exports = {
             },
         ],
     },
-    plugins: [new CopyWebpackPlugin({ patterns: [{ from: "public", to: "../../dist/client/public/bundles" }] })],
+    plugins: [new CopyWebpackPlugin({ patterns: [{ from: "public", to: "../../dist/client/public" }] })],
 };
