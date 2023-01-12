@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon --ignore ./client/ index.ts"
+    "dev": "npx nodemon --ignore ./client/ index.ts",
+    "build": "rimraf ./dist && tsc && npm run --prefix client build",
+    "start": "npm run build && node dist/index.js"
   },
   "repository": {
     "type": "git",
