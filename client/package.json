@@ -4,7 +4,7 @@
     "description": "",
     "main": "webpack.config.js",
     "scripts": {
-        "build": "webpack && cpx \"public/*\" ../dist/client/public",
+        "build": "webpack",
         "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx}\"",
         "watch": "webpack --watch --color --mode development"
     },
