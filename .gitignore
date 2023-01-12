@@ -4,3 +4,4 @@ obj
 .vs
 **/public/*.js
 dist
+.env
