@@ -20,17 +20,17 @@ app.use(cookieParser());
 
 app.use(bodyParser.json());
 
-app.use("/bundles", express.static(path.join(__dirname, "/client/public/bundles")));
+app.use("/bundles", express.static(path.resolve(path.join(__dirname, "/client/public/bundles"))));
 
 app.use("/auth", authRouter);
 app.use("/cards", cardsRouter);
 app.use("/user", userRouter);
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/client/public/index.html"));
+    res.sendFile(path.resolve(path.join(__dirname, "/client/public/index.html")));
 });
 
 app.listen(port, () => {
-    console.log(__dirname);
+    console.log(port);
 });
 
 // app.get("/", (req, res) => res.type("html").send(html));
