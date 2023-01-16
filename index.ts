@@ -1,6 +1,7 @@
 import { config } from "dotenv";
 import express from "express";
 import path from "path";
+import cors from "cors"
 import { connectDB } from "./configs/database";
 import bodyParser from "body-parser";
 import { authRouter } from "./routes/authRouter";
@@ -15,7 +16,7 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 
-// app.use(cors({ credentials: true, origin: process.env.FRONT_END_URL }));
+app.use(cors({ credentials: true, origin: process.env.FRONT_END_URL }));
 app.use(cookieParser());
 
 app.use(bodyParser.json());
